@@ -80,6 +80,114 @@
   }
 },
 {
+  "model": "gameplay.ability",
+  "pk": 1,
+  "fields": {
+    "character": 1,
+    "name": "Logic Corruption",
+    "ability_type": "debuff",
+    "power": 15,
+    "cooldown": 2,
+    "description": "Reduce temporalmente el daño enemigo alterando su lógica de combate."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 2,
+  "fields": {
+    "character": 1,
+    "name": "Firewall Breach",
+    "ability_type": "attack",
+    "power": 25,
+    "cooldown": 3,
+    "description": "Ataque ofensivo basado en vulnerabilidades de seguridad."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 3,
+  "fields": {
+    "character": 2,
+    "name": "Rubber Shield",
+    "ability_type": "defense",
+    "power": 20,
+    "cooldown": 2,
+    "description": "Incrementa la mitigación de daño del equipo temporalmente."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 4,
+  "fields": {
+    "character": 2,
+    "name": "Dark Quack Force",
+    "ability_type": "attack",
+    "power": 18,
+    "cooldown": 3,
+    "description": "Golpe de control con energía oscura de patito imperial."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 5,
+  "fields": {
+    "character": 3,
+    "name": "Syntax Explosion",
+    "ability_type": "attack",
+    "power": 40,
+    "cooldown": 4,
+    "description": "Explosión mágica potenciada por respuestas técnicas correctas."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 6,
+  "fields": {
+    "character": 3,
+    "name": "Arcane Compilation",
+    "ability_type": "debuff",
+    "power": 15,
+    "cooldown": 3,
+    "description": "Incrementa temporalmente el daño mágico del usuario."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 7,
+  "fields": {
+    "character": 4,
+    "name": "Healing Soup",
+    "ability_type": "heal",
+    "power": 25,
+    "cooldown": 3,
+    "description": "Cura aliados usando sopa culinaria altamente sospechosa."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 8,
+  "fields": {
+    "character": 5,
+    "name": "Motivational Song",
+    "ability_type": "buff",
+    "power": 20,
+    "cooldown": 3,
+    "description": "Mejora las estadísticas generales del equipo."
+  }
+},
+{
+  "model": "gameplay.ability",
+  "pk": 9,
+  "fields": {
+    "character": 5,
+    "name": "Sonic Quack",
+    "ability_type": "debuff",
+    "power": 12,
+    "cooldown": 2,
+    "description": "Reduce temporalmente la precisión del enemigo."
+  }
+},
+{
   "model": "gameplay.questioncategory",
   "pk": 1,
   "fields": {
