@@ -3,7 +3,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from gameplay.views import (
     GameMapViewSet, CharacterViewSet, AbilityViewSet,
-    MatchViewSet, MatchPlayerViewSet, PlayerFriendViewSet
+    MatchViewSet, MatchPlayerViewSet, PlayerFriendViewSet,
+    resolve_answer
 )
 
 # El router de Django REST Framework genera las URLs automáticamente
@@ -31,7 +32,9 @@ router.register(r'question-categories', QuestionCategoryViewSet)
 router.register(r'questions', QuestionViewSet)
 router.register(r'answer-options', AnswerOptionViewSet)
 
+# Todas tus rutas colgarán de /api/
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)), # Todas tus rutas colgarán de /api/
+    path('api/', include(router.urls)),
+    path('api/combat/resolve-answer/', resolve_answer),
 ]

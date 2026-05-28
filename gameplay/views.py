@@ -9,6 +9,9 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
 import random
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
 class GameMapViewSet(viewsets.ModelViewSet):
     queryset = GameMap.objects.all()
@@ -93,7 +96,48 @@ class QuestionViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(question)
         return Response(serializer.data)
 
-
 class AnswerOptionViewSet(viewsets.ModelViewSet):
     queryset = AnswerOption.objects.all()
     serializer_class = AnswerOptionSerializer
+
+
+@api_view(['POST'])
+def resolve_answer(request):
+    question_id = request.data.get('question_id')
+    selected_answer_id = request.data.get('selected_answer_id')
+    attacker_character_id = request.data.get('attacker_character_id')
+
+    if not question_id or not selected_answer_id or not attacker_character_id:
+        return Response(
+            {'detail': 'question_id, selected_answer_id and attacker_character_id are required.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    try:
+        question = Question.objects.get(id=question_id)
+        selected_answer = AnswerOption.objects.get(id=selected_answer_id, question=question)
+        attacker = Character.objects.get(id=attacker_character_id)
+    except Question.DoesNotExist:
+        return Response({'detail': 'Question not found.'}, status=status.HTTP_404_NOT_FOUND)
+    except AnswerOption.DoesNotExist:
+        return Response({'detail': 'Answer option not found for this question.'}, status=status.HTTP_404_NOT_FOUND)
+    except Character.DoesNotExist:
+        return Response({'detail': 'Attacker character not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+    is_correct = selected_answer.is_correct
+
+    if is_correct:
+        damage = attacker.base_damage
+        message = f'Respuesta correcta. {attacker.name} inflige {damage} de daño.'
+    else:
+        damage = 0
+        message = f'Respuesta incorrecta. {attacker.name} no inflige daño.'
+
+    return Response({
+        'correct': is_correct,
+        'damage': damage,
+        'attacker': attacker.name,
+        'question': question.text,
+        'selected_answer': selected_answer.text,
+        'message': message
+    })
