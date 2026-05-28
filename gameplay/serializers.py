@@ -62,14 +62,23 @@ class QuestionCategorySerializer(serializers.ModelSerializer):
         model = QuestionCategory
         fields = '__all__'
 
-
-class QuestionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Question
-        fields = '__all__'
-
-
 class AnswerOptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnswerOption
         fields = '__all__'
+
+class QuestionSerializer(serializers.ModelSerializer):
+    options = AnswerOptionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Question
+        fields = [
+            'id',
+            'category',
+            'text',
+            'difficulty',
+            'correct_answer',
+            'options',
+        ]
+
+
