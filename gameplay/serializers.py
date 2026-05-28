@@ -6,15 +6,28 @@ class GameMapSerializer(serializers.ModelSerializer):
         model = GameMap
         fields = '__all__'
 
-class CharacterSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Character
-        fields = '__all__'
-
 class AbilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Ability
         fields = '__all__'
+
+class CharacterSerializer(serializers.ModelSerializer):
+    abilities = AbilitySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Character
+        fields = [
+            'id',
+            'name',
+            'role',
+            'base_health',
+            'base_damage',
+            'base_stamina',
+            'base_defense',
+            'base_support',
+            'description',
+            'abilities',
+        ]
 
 class MatchSerializer(serializers.ModelSerializer):
     class Meta:
