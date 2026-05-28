@@ -5,6 +5,10 @@ from .serializers import (
     MatchSerializer, MatchPlayerSerializer, PlayerFriendSerializer,
     QuestionSerializer, QuestionCategorySerializer, AnswerOptionSerializer
 )
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import status
+import random
 
 class GameMapViewSet(viewsets.ModelViewSet):
     queryset = GameMap.objects.all()
@@ -64,6 +68,30 @@ class QuestionCategoryViewSet(viewsets.ModelViewSet):
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+    @action(detail=False, methods=['get'])
+    def random(self, request):
+        category = request.query_params.get('category')
+        difficulty = request.query_params.get('difficulty')
+
+        questions = Question.objects.all()
+
+        if category:
+            questions = questions.filter(category__name__iexact=category)
+
+        if difficulty:
+            questions = questions.filter(difficulty__iexact=difficulty)
+
+        question = questions.order_by('?').first()
+
+        if not question:
+            return Response(
+                {'detail': 'No questions found for the selected filters.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = self.get_serializer(question)
+        return Response(serializer.data)
 
 
 class AnswerOptionViewSet(viewsets.ModelViewSet):
