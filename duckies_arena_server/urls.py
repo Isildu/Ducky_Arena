@@ -17,7 +17,8 @@ router.register(r'friends', PlayerFriendViewSet)
 
 from gameplay.views import (
     PlayerProfileViewSet, CosmeticViewSet, PlayerCosmeticViewSet,
-    DailyQuestViewSet, PlayerQuestViewSet
+    DailyQuestViewSet, PlayerQuestViewSet, QuestionCategoryViewSet, 
+    QuestionViewSet, AnswerOptionViewSet
 )
 
 # ... (donde tienes tus otros router.register, añade estos 5 abajo) ...
@@ -26,8 +27,11 @@ router.register(r'cosmetics', CosmeticViewSet)
 router.register(r'player-cosmetics', PlayerCosmeticViewSet)
 router.register(r'quests', DailyQuestViewSet)
 router.register(r'player-quests', PlayerQuestViewSet)
+router.register(r'question-categories', QuestionCategoryViewSet)
+router.register(r'questions', QuestionViewSet)
+router.register(r'answer-options', AnswerOptionViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.viewsets if hasattr(admin, 'viewsets') else admin.site.urls),
+    path('admin/', admin.site.urls),
     path('api/', include(router.urls)), # Todas tus rutas colgarán de /api/
 ]

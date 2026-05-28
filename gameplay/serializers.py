@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import GameMap, Character, Ability, Match, MatchPlayer, PlayerFriend
+from .models import GameMap, Character, Ability, Match, MatchPlayer, PlayerFriend, Question, QuestionCategory, AnswerOption
 
 class GameMapSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,4 +55,21 @@ class DailyQuestSerializer(serializers.ModelSerializer):
 class PlayerQuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlayerQuest
+        fields = '__all__'
+
+class QuestionCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionCategory
+        fields = '__all__'
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = '__all__'
+
+
+class AnswerOptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnswerOption
         fields = '__all__'

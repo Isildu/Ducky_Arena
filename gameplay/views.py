@@ -1,8 +1,9 @@
 from rest_framework import viewsets
-from .models import GameMap, Character, Ability, Match, MatchPlayer, PlayerFriend
+from .models import GameMap, Character, Ability, Match, MatchPlayer, PlayerFriend, Question, QuestionCategory, AnswerOption
 from .serializers import (
     GameMapSerializer, CharacterSerializer, AbilitySerializer,
-    MatchSerializer, MatchPlayerSerializer, PlayerFriendSerializer
+    MatchSerializer, MatchPlayerSerializer, PlayerFriendSerializer,
+    QuestionSerializer, QuestionCategorySerializer, AnswerOptionSerializer
 )
 
 class GameMapViewSet(viewsets.ModelViewSet):
@@ -54,3 +55,17 @@ class DailyQuestViewSet(viewsets.ModelViewSet):
 class PlayerQuestViewSet(viewsets.ModelViewSet):
     queryset = PlayerQuest.objects.all()
     serializer_class = PlayerQuestSerializer
+
+class QuestionCategoryViewSet(viewsets.ModelViewSet):
+    queryset = QuestionCategory.objects.all()
+    serializer_class = QuestionCategorySerializer
+
+
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+
+class AnswerOptionViewSet(viewsets.ModelViewSet):
+    queryset = AnswerOption.objects.all()
+    serializer_class = AnswerOptionSerializer
