@@ -1,0 +1,168 @@
+[
+{
+  "model": "gameplay.gamemap",
+  "pk": 1,
+  "fields": {
+    "name": "Rubber Rift",
+    "max_players": 6,
+    "theme": "Bathroom Arena",
+    "lanes": 3
+  }
+},
+{
+  "model": "gameplay.character",
+  "pk": 1,
+  "fields": {
+    "name": "HackQuack",
+    "role": "hacker",
+    "base_health": 80,
+    "base_damage": 20,
+    "base_stamina": 15,
+    "base_defense": 5,
+    "base_support": 10,
+    "description": "Especialista en debuffs y alteración lógica del rival mediante ataques de hacking táctico."
+  }
+},
+{
+  "model": "gameplay.character",
+  "pk": 2,
+  "fields": {
+    "name": "Duck Vader",
+    "role": "tank",
+    "base_health": 150,
+    "base_damage": 10,
+    "base_stamina": 30,
+    "base_defense": 25,
+    "base_support": 5,
+    "description": "Tanque defensivo con gran resistencia y habilidades de control orientadas a proteger al equipo."
+  }
+},
+{
+  "model": "gameplay.character",
+  "pk": 3,
+  "fields": {
+    "name": "Magicuack",
+    "role": "mage",
+    "base_health": 70,
+    "base_damage": 35,
+    "base_stamina": 10,
+    "base_defense": 3,
+    "base_support": 8,
+    "description": "Mago ofensivo capaz de infligir enormes cantidades de daño al responder correctamente preguntas técnicas."
+  }
+},
+{
+  "model": "gameplay.character",
+  "pk": 4,
+  "fields": {
+    "name": "Chef Duck",
+    "role": "healer",
+    "base_health": 100,
+    "base_damage": 15,
+    "base_stamina": 20,
+    "base_defense": 10,
+    "base_support": 25,
+    "description": "Combatiente híbrido que mezcla curaciones absurdas y ataques culinarios devastadores."
+  }
+},
+{
+  "model": "gameplay.character",
+  "pk": 5,
+  "fields": {
+    "name": "Barduck",
+    "role": "support",
+    "base_health": 90,
+    "base_damage": 8,
+    "base_stamina": 18,
+    "base_defense": 12,
+    "base_support": 35,
+    "description": "Soporte estratégico especializado en buffs globales y mejora de estadísticas del equipo."
+  }
+},
+{
+  "model": "gameplay.questioncategory",
+  "pk": 1,
+  "fields": {
+    "name": "HTML",
+    "required_level": 1
+  }
+},
+{
+  "model": "gameplay.questioncategory",
+  "pk": 2,
+  "fields": {
+    "name": "CSS",
+    "required_level": 2
+  }
+},
+{
+  "model": "gameplay.questioncategory",
+  "pk": 3,
+  "fields": {
+    "name": "JavaScript",
+    "required_level": 3
+  }
+},
+{
+  "model": "gameplay.questioncategory",
+  "pk": 4,
+  "fields": {
+    "name": "APIs REST",
+    "required_level": 5
+  }
+},
+{
+  "model": "gameplay.questioncategory",
+  "pk": 5,
+  "fields": {
+    "name": "Databases",
+    "required_level": 7
+  }
+},
+{
+  "model": "gameplay.question",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "text": "¿Qué etiqueta HTML se utiliza para crear un enlace?",
+    "difficulty": "easy",
+    "correct_answer": "<a>"
+  }
+},
+{
+  "model": "gameplay.answeroption",
+  "pk": 1,
+  "fields": {
+    "question": 1,
+    "text": "<a>",
+    "is_correct": true
+  }
+},
+{
+  "model": "gameplay.answeroption",
+  "pk": 2,
+  "fields": {
+    "question": 1,
+    "text": "<div>",
+    "is_correct": false
+  }
+},
+{
+  "model": "gameplay.answeroption",
+  "pk": 3,
+  "fields": {
+    "question": 1,
+    "text": "<link>",
+    "is_correct": false
+  }
+},
+{
+  "model": "gameplay.answeroption",
+  "pk": 4,
+  "fields": {
+    "question": 1,
+    "text": "<button>",
+    "is_correct": false
+  }
+}
+]
